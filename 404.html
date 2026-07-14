@@ -2,54 +2,40 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>404 — hyggehome</title>
-<meta name="description" content="Страница не найдена.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Страница не найдена — hyggehome</title>
+<meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<header class="site-nav">
+<nav>
   <div class="wrap nav-in">
-    <a href="index.html" class="brand"><svg class="mark" width="34" height="34" viewBox="0 0 400 400" aria-hidden="true"><path d="M200 64 L330 178 L330 332 L70 332 L70 178 Z" fill="none" stroke="#2E3A34" stroke-width="21" stroke-linejoin="round" stroke-linecap="round"/><path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z" fill="#D98452"/></svg><span class="word"><b>hygge</b><span class="hl">home</span></span></a>
-    <nav class="nav-links" id="navlinks">
+    <a href="index.html" class="brand" aria-label="hyggehome">
+      <svg class="mark" width="34" height="34" viewBox="0 0 400 400">
+        <path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/>
+        <path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/>
+      </svg>
+      <span class="word"><b>hygge</b><span class="h2">home</span></span>
+    </a>
+    <div class="nav-links">
       <a href="catalog.html">Каталог</a>
-      <a href="index.html#brand" class="active">О бренде</a>
-      <a href="index.html#footer" class="active">Контакты</a>
-      <a href="cart.html" class="nav-cart">Корзина <span class="cart-count" data-cart-count>0</span></a>
-    </nav>
-    <button class="burger" id="burger" aria-label="Меню">≡</button>
-  </div>
-</header>
-<section class="wrap"><div class="empty" style="padding:120px 20px">
-  <h3>Страница не найдена</h3>
-  <p>Возможно, ссылка устарела. Вернитесь на главную или загляните в каталог.</p>
-  <p style="margin-top:18px"><a class="btn btn-primary" href="index.html">На главную</a> &nbsp; <a class="btn btn-ghost" href="catalog.html">В каталог</a></p>
-</div></section>
-<footer class="site-foot" id="footer">
-  <div class="wrap">
-    <div class="foot-in">
-      <div>
-        <a href="index.html" class="brand"><svg class="mark" width="34" height="34" viewBox="0 0 400 400" aria-hidden="true"><path d="M200 64 L330 178 L330 332 L70 332 L70 178 Z" fill="none" stroke="#2E3A34" stroke-width="21" stroke-linejoin="round" stroke-linecap="round"/><path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z" fill="#D98452"/></svg><span class="word"><b>hygge</b><span class="hl">home</span></span></a>
-        <p class="lead">Товары для уютного дома. Москва, доставка по России.</p>
-      </div>
-      <div class="fcol"><h5>Каталог</h5>
-        <a href="catalog.html?cat=posuda">Посуда</a>
-        <a href="catalog.html?cat=textile">Текстиль</a>
-        <a href="catalog.html?cat=cleaning">Уборка</a>
-        <a href="catalog.html?cat=misc">Мелочи для дома</a>
-      </div>
-      <div class="fcol"><h5>Связь</h5>
-        <a href="#">Wildberries</a><a href="#">Ozon</a>
-        <a href="mailto:hello@hyggehome.ru">hello@hyggehome.ru</a>
-        <a href="tel:+79990000000">+7 999 000-00-00</a>
-      </div>
+      <a href="account.html" class="account-name" style="color:var(--muted);font-weight:500">Войти</a>
+      <a href="cart.html" class="nav-cart">Корзина · <span class="cart-count">0</span></a>
     </div>
-    <div class="foot-bot"><span>© <span data-year>2026</span> hyggehome</span><span>Сделано с теплом</span></div>
   </div>
-</footer>
-<script src="assets/data/products.js"></script>
-<script src="assets/js/app.js"></script>
-
+</nav>
+<main class="wrap section">
+  <div class="empty" style="padding:90px 20px">
+    <div style="font-family:var(--display);font-size:96px;color:var(--terra);line-height:1">404</div>
+    <h3>Такой страницы нет</h3>
+    <p>Возможно, ссылка устарела. Но дома всегда тепло — вернитесь на главную или загляните в каталог.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-primary" href="index.html">На главную</a>
+      <a class="btn btn-ghost" href="catalog.html">В каталог</a>
+    </div>
+  </div>
+</main>
+<script src="assets/js/store.js"></script>
 </body>
 </html>

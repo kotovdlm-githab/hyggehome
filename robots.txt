@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://hyggehome.ru/sitemap.xml
+Disallow: /cart.html
+Disallow: /account.html
+
+Sitemap: https://hyggehome.top/sitemap.xml
