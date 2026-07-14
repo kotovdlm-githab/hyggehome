@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог — hyggehome</title>
+<meta name="description" content="Каталог товаров для дома hyggehome: посуда, текстиль, средства уборки и мелочи. Поиск и фильтры.">
+<link rel="icon" href="assets/img/logo-mark.svg">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="index.html" class="brand" aria-label="hyggehome">
+      <svg viewBox="0 0 400 400"><path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/><path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/></svg>
+      <span class="word">hygge<span class="t">home</span></span>
+    </a>
+    <nav class="nav">
+      <a href="catalog.html" class="active">Каталог</a>
+      <a href="index.html#brand">О бренде</a>
+      <a href="index.html#footer">Контакты</a>
+    </nav>
+    <a href="cart.html" class="header-cart">Корзина <span class="badge cart-count">0</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <div class="crumbs"><a href="index.html">Главная</a> / Каталог</div>
+    <h1>Каталог</h1>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="search" placeholder="Поиск по каталогу…" autocomplete="off">
+    </div>
+    <div class="sortbox">
+      <label for="sort">Сортировка:</label>
+      <select id="sort">
+        <option value="pop">Популярные</option>
+        <option value="cheap">Сначала дешевле</option>
+        <option value="expensive">Сначала дороже</option>
+        <option value="new">Новинки</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <div class="result-count" id="count"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand">
+          <svg viewBox="0 0 400 400"><path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/><path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/></svg>
+          <span class="word">hygge<span class="t">home</span></span>
+        </a>
+        <p>Товары для уютного дома. Москва, доставка по России.</p>
+      </div>
+      <div class="fcol"><h5>Каталог</h5>
+        <a href="catalog.html?cat=kitchen">Посуда</a><a href="catalog.html?cat=textile">Текстиль</a>
+        <a href="catalog.html?cat=cleaning">Уборка</a><a href="catalog.html?cat=misc">Мелочи</a>
+      </div>
+      <div class="fcol"><h5>Связь</h5>
+        <a href="#">Wildberries</a><a href="#">Ozon</a>
+        <a href="mailto:hello@hyggehome.ru">hello@hyggehome.ru</a><a href="#">+7 999 000-00-00</a>
+      </div>
+    </div>
+    <div class="foot-bot"><span>© 2026 hyggehome</span><span>Сделано с теплом</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/catalog.js"></script>
+</body>
+</html>

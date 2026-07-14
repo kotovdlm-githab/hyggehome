@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hyggehome — товары для дома</title>
+<link rel="icon" href="assets/img/logo-mark.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --ink:#2E3A34;
+  --terra:#D98452;
+  --terra-soft:#E9A878;
+  --cream:#F5EFE6;
+  --paper:#FBF8F3;
+  --sage:#8C9A8E;
+  --muted:#7C817A;
+  --line:rgba(46,58,52,.13);
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);font-weight:600}
+
+/* ---------- mark ---------- */
+.mark{display:block}
+.mark .house{fill:none;stroke:var(--ink);stroke-width:21;stroke-linejoin:round;stroke-linecap:round}
+.mark .flame{fill:var(--terra)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .word{font-family:var(--sans);font-weight:600;font-size:23px;letter-spacing:.01em}
+.brand .word b{font-weight:600}
+.brand .word .h2{color:var(--terra);font-weight:600}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:20;background:rgba(251,248,243,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-links{display:flex;gap:34px;align-items:center;font-size:15px;font-weight:500}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cart{font-weight:600;color:var(--ink)}
+.burger{display:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--cream);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:84px 0 92px}
+.hero h1{font-family:var(--display);font-weight:500;font-size:clamp(44px,6vw,82px);line-height:1.03;letter-spacing:-.01em;margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--terra)}
+.hero p{font-size:18px;color:var(--muted);max-width:430px;margin-bottom:32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:40px;font-weight:600;font-size:15px;transition:transform .2s,background .2s}
+.btn-primary{background:var(--ink);color:var(--cream)}
+.btn-primary:hover{transform:translateY(-2px);background:#222c27}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+.hero-art{display:flex;justify-content:center;align-items:center;position:relative}
+.glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(217,132,82,.34),rgba(217,132,82,0) 68%);filter:blur(6px)}
+.hero-art svg{position:relative;width:280px;height:280px}
+.hero-tags{position:absolute;bottom:30px;right:0;display:flex;gap:8px;flex-wrap:wrap;max-width:240px;justify-content:flex-end}
+.tag{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:6px 14px;font-size:13px;font-weight:500;color:var(--muted)}
+
+/* ---------- categories ---------- */
+.section{padding:88px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;gap:20px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(32px,4vw,46px);line-height:1.08}
+.sec-head .link{font-weight:600;color:var(--terra);font-size:15px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat{background:var(--cream);border-radius:20px;padding:26px 24px 30px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s,box-shadow .25s;border:1px solid transparent}
+.cat:hover{transform:translateY(-5px);box-shadow:0 18px 40px -22px rgba(46,58,52,.35);border-color:var(--line)}
+.cat:nth-child(2){background:#EFE7DB}
+.cat:nth-child(3){background:#E7ECE6}
+.cat:nth-child(4){background:#F1E4D8}
+.cat-ico{width:46px;height:46px;color:var(--ink)}
+.cat-ico svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cat h3{font-family:var(--display);font-weight:600;font-size:25px;margin-bottom:4px}
+.cat p{font-size:14px;color:var(--muted);margin-bottom:14px}
+.cat .go{font-size:14px;font-weight:600;color:var(--ink)}
+
+/* ---------- brand band ---------- */
+.brandband{background:var(--ink);color:var(--cream)}
+.bb-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:92px 0}
+.bb-in .eyebrow{color:var(--terra-soft)}
+.bb-in h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.12;margin:16px 0 20px}
+.bb-in p{color:rgba(245,239,230,.78);font-size:16.5px;max-width:460px}
+.bb-art{display:flex;justify-content:center}
+.bb-art .mark .house{stroke:var(--cream)}
+.bb-art svg{width:200px;height:200px}
+.bb-quote{font-family:var(--display);font-style:italic;font-size:22px;line-height:1.4;color:var(--cream);margin-top:26px;padding-left:18px;border-left:2px solid var(--terra)}
+
+/* ---------- values ---------- */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:8px}
+.val .num{font-family:var(--display);font-size:30px;color:var(--terra);margin-bottom:8px}
+.val h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.val p{font-size:15px;color:var(--muted)}
+
+/* ---------- footer ---------- */
+footer{background:var(--cream);border-top:1px solid var(--line);padding:60px 0 36px}
+.foot-in{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+.foot-in p{font-size:14px;color:var(--muted);max-width:260px;margin-top:14px}
+.foot col,.fcol h5{}
+.fcol h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:14px}
+.fcol a{display:block;font-size:15px;color:var(--muted);margin-bottom:9px;transition:color .2s}
+.fcol a:hover{color:var(--ink)}
+.foot-bot{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:10px}
+
+@media(max-width:860px){
+  .nav-links{display:none}
+  .hero-in,.bb-in,.foot-in{grid-template-columns:1fr}
+  .hero-art{order:-1;margin-bottom:10px}
+  .hero-tags{position:static;justify-content:flex-start;max-width:none;margin-top:18px}
+  .cats{grid-template-columns:1fr 1fr}
+  .values{grid-template-columns:1fr;gap:24px}
+  .bb-art{order:-1}
+}
+@media(max-width:520px){.cats{grid-template-columns:1fr}}
+
+.fade{opacity:0;transform:translateY(16px);animation:fade .8s ease forwards}
+.fade:nth-child(2){animation-delay:.08s}
+@keyframes fade{to{opacity:1;transform:none}}
+
+/* ---------- depth ---------- */
+.hero{background:radial-gradient(120% 130% at 78% 28%, #FCF4EA 0%, var(--cream) 58%)}
+nav{transition:box-shadow .3s ease}
+nav.scrolled{box-shadow:0 8px 28px -18px rgba(46,58,52,.55)}
+.btn-primary{box-shadow:0 8px 20px -10px rgba(46,58,52,.55)}
+.cat{box-shadow:0 2px 6px rgba(46,58,52,.05),0 14px 30px -22px rgba(46,58,52,.30)}
+.cat:hover{box-shadow:0 22px 46px -22px rgba(46,58,52,.42)}
+.cat-ico{filter:drop-shadow(0 4px 6px rgba(46,58,52,.10))}
+.brandband{position:relative;overflow:hidden}
+.bb-art{position:relative}
+.bb-art::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(217,132,82,.28),rgba(217,132,82,0) 66%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.bb-art svg{position:relative;z-index:2}
+.bb-bg{position:absolute;inset:0;z-index:0}
+.bb-bg svg{width:100%;height:100%;display:block;filter:blur(3px);transform:scale(1.08)}
+.bb-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(34,44,38,.44),rgba(34,44,38,.74))}
+.bb-in{position:relative;z-index:2}
+
+/* ---------- gentle motion ---------- */
+.hero-art .glow{top:50%;left:50%;animation:glowpulse 3.8s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+.hero-art>svg{animation:floaty 6.5s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.hero-art .flame{transform-box:fill-box;transform-origin:50% 92%;animation:flicker 3.8s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scaleY(1) scaleX(1) translateX(0);opacity:1}25%{transform:scaleY(1.05) scaleX(.985) translateX(-1px);opacity:.93}50%{transform:scaleY(.97) scaleX(1.02) translateX(1px);opacity:1}75%{transform:scaleY(1.04) scaleX(.99);opacity:.96}}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto}
+  .hero-art .flame,.hero-art .glow,.hero-art>svg{animation:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="brand" aria-label="hyggehome">
+      <svg class="mark" width="34" height="34" viewBox="0 0 400 400">
+        <path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/>
+        <path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/>
+      </svg>
+      <span class="word"><b>hygge</b><span class="h2">home</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="catalog.html">Каталог</a>
+      <a href="#brand">О бренде</a>
+      <a href="#footer">Контакты</a>
+      <a href="cart.html" class="nav-cart">Корзина · <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-in">
+    <div class="fade">
+      <span class="eyebrow">Товары для дома</span>
+      <h1>Хюгге <em>в каждой</em> детали</h1>
+      <p>Посуда, текстиль и мелочи для уборки — простые вещи, в которых дом становится теплее каждый день.</p>
+      <div class="btns">
+        <a href="catalog.html" class="btn btn-primary">Смотреть каталог →</a>
+        <a href="#brand" class="btn btn-ghost">О бренде</a>
+      </div>
+    </div>
+    <div class="hero-art fade">
+      <div class="glow"></div>
+      <svg class="mark" viewBox="0 0 400 400">
+        <path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/>
+        <path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/>
+      </svg>
+      <div class="hero-tags">
+        <span class="tag">посуда</span>
+        <span class="tag">текстиль</span>
+        <span class="tag">уборка</span>
+        <span class="tag">мелочи</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORIES -->
+<section class="section" id="cats">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Каталог</span>
+        <h2>Всё для уютного дома</h2>
+      </div>
+      <a href="catalog.html" class="link">Весь каталог →</a>
+    </div>
+    <div class="cats">
+      <a href="catalog.html?cat=kitchen" class="cat">
+        <div class="cat-ico"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="8"/></svg></div>
+        <div>
+          <h3>Посуда</h3>
+          <p>Тарелки, кружки, сковороды</p>
+          <span class="go">Смотреть →</span>
+        </div>
+      </a>
+      <a href="catalog.html?cat=textile" class="cat">
+        <div class="cat-ico"><svg viewBox="0 0 40 40"><rect x="8" y="9" width="24" height="22" rx="3"/><path d="M8 16h24"/><path d="M14 9v22"/></svg></div>
+        <div>
+          <h3>Текстиль</h3>
+          <p>Полотенца и постельное бельё</p>
+          <span class="go">Смотреть →</span>
+        </div>
+      </a>
+      <a href="catalog.html?cat=cleaning" class="cat">
+        <div class="cat-ico"><svg viewBox="0 0 40 40"><path d="M17 6h6v6h-6z"/><path d="M16 12h8l2 6v16H14V18z"/><path d="M23 6l5 3"/></svg></div>
+        <div>
+          <h3>Уборка</h3>
+          <p>Спреи, щётки, салфетки</p>
+          <span class="go">Смотреть →</span>
+        </div>
+      </a>
+      <a href="catalog.html?cat=misc" class="cat">
+        <div class="cat-ico"><svg viewBox="0 0 40 40"><rect x="9" y="9" width="22" height="11" rx="3"/><path d="M20 20v6"/><path d="M16 26h8v8h-8z"/></svg></div>
+        <div>
+          <h3>Мелочи</h3>
+          <p>Ролики для одежды и не только</p>
+          <span class="go">Смотреть →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND BAND -->
+<section class="brandband" id="brand">
+  <div class="bb-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+  <linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5a6c53"/><stop offset=".4" stop-color="#3d4f43"/>
+    <stop offset=".75" stop-color="#2a382f"/><stop offset="1" stop-color="#1d2721"/>
+  </linearGradient>
+  <radialGradient id="fsun" cx="70%" cy="16%" r="55%">
+    <stop offset="0" stop-color="#f6dec1" stop-opacity=".55"/><stop offset="1" stop-color="#f6dec1" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="bok" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#f7e6c6" stop-opacity=".95"/><stop offset=".5" stop-color="#f0e0b6" stop-opacity=".4"/><stop offset="1" stop-color="#f0e0b6" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="bokg" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#c9d59a" stop-opacity=".7"/><stop offset="1" stop-color="#c9d59a" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="bfar" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="20"/></filter>
+  <filter id="bmid" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+  <filter id="bbok" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="2" seed="4" stitchTiles="stitch" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0"/></filter>
+  <filter id="leaf" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="11" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.8 0 0 0 -0.15" result="a"/>
+    <feFlood flood-color="#33453a" result="c"/>
+    <feComposite in="c" in2="a" operator="in" result="leaves"/>
+    <feGaussianBlur in="leaves" stdDeviation="6"/>
+  </filter>
+</defs>
+      <rect width="1200" height="460" fill="url(#fsky)"/>
+      <g filter="url(#bfar)">
+      <ellipse cx="375" cy="13" rx="198" ry="85" fill="#5d6f52" opacity="0.47"/>
+      <ellipse cx="706" cy="227" rx="146" ry="86" fill="#4b5d47" opacity="0.47"/>
+      <ellipse cx="76" cy="90" rx="219" ry="89" fill="#54664d" opacity="0.61"/>
+      <ellipse cx="706" cy="-12" rx="190" ry="83" fill="#54664d" opacity="0.46"/>
+      <ellipse cx="1059" cy="52" rx="137" ry="88" fill="#4b5d47" opacity="0.59"/>
+      <ellipse cx="833" cy="-1" rx="189" ry="93" fill="#54664d" opacity="0.59"/>
+      <ellipse cx="40" cy="-13" rx="145" ry="128" fill="#4b5d47" opacity="0.64"/>
+      <ellipse cx="556" cy="231" rx="163" ry="97" fill="#54664d" opacity="0.62"/>
+      <ellipse cx="272" cy="133" rx="183" ry="141" fill="#5d6f52" opacity="0.56"/>
+      <ellipse cx="739" cy="-9" rx="181" ry="92" fill="#4b5d47" opacity="0.49"/>
+      <ellipse cx="586" cy="-19" rx="200" ry="134" fill="#5d6f52" opacity="0.65"/>
+      <ellipse cx="1007" cy="66" rx="162" ry="115" fill="#4b5d47" opacity="0.47"/>
+      <ellipse cx="80" cy="46" rx="204" ry="85" fill="#5d6f52" opacity="0.63"/>
+      <ellipse cx="788" cy="251" rx="219" ry="100" fill="#4b5d47" opacity="0.67"/>
+      </g>
+      <rect x="0" y="0" width="1200" height="322" filter="url(#leaf)" opacity=".55"/>
+      <g filter="url(#bmid)">
+      <ellipse cx="404" cy="367" rx="106" ry="95" fill="#283629" opacity="0.52"/>
+      <ellipse cx="943" cy="33" rx="95" ry="80" fill="#283629" opacity="0.53"/>
+      <ellipse cx="535" cy="206" rx="158" ry="108" fill="#3a4d40" opacity="0.75"/>
+      <ellipse cx="1223" cy="261" rx="108" ry="70" fill="#33453a" opacity="0.56"/>
+      <ellipse cx="257" cy="76" rx="118" ry="93" fill="#3a4d40" opacity="0.60"/>
+      <ellipse cx="146" cy="200" rx="131" ry="76" fill="#2c3c32" opacity="0.74"/>
+      <ellipse cx="620" cy="234" rx="138" ry="59" fill="#283629" opacity="0.64"/>
+      <ellipse cx="464" cy="178" rx="110" ry="67" fill="#2c3c32" opacity="0.65"/>
+      <ellipse cx="101" cy="227" rx="80" ry="92" fill="#33453a" opacity="0.83"/>
+      <ellipse cx="746" cy="9" rx="91" ry="79" fill="#3a4d40" opacity="0.83"/>
+      <ellipse cx="731" cy="175" rx="82" ry="87" fill="#283629" opacity="0.67"/>
+      <ellipse cx="359" cy="39" rx="145" ry="103" fill="#283629" opacity="0.79"/>
+      <ellipse cx="167" cy="-11" rx="165" ry="89" fill="#2c3c32" opacity="0.74"/>
+      <ellipse cx="1130" cy="292" rx="100" ry="97" fill="#33453a" opacity="0.74"/>
+      <ellipse cx="294" cy="131" rx="87" ry="105" fill="#3a4d40" opacity="0.72"/>
+      <ellipse cx="745" cy="304" rx="146" ry="68" fill="#2c3c32" opacity="0.79"/>
+      <ellipse cx="907" cy="73" rx="122" ry="78" fill="#33453a" opacity="0.85"/>
+      <ellipse cx="971" cy="174" rx="89" ry="94" fill="#3a4d40" opacity="0.66"/>
+      <ellipse cx="1159" cy="386" rx="166" ry="79" fill="#2c3c32" opacity="0.54"/>
+      <ellipse cx="562" cy="119" rx="118" ry="119" fill="#33453a" opacity="0.67"/>
+      <ellipse cx="796" cy="309" rx="78" ry="98" fill="#283629" opacity="0.77"/>
+      <ellipse cx="920" cy="176" rx="88" ry="106" fill="#3a4d40" opacity="0.53"/>
+      <ellipse cx="1171" cy="277" rx="116" ry="103" fill="#33453a" opacity="0.75"/>
+      <ellipse cx="178" cy="32" rx="85" ry="114" fill="#2c3c32" opacity="0.71"/>
+      <ellipse cx="723" cy="175" rx="164" ry="65" fill="#2c3c32" opacity="0.51"/>
+      <ellipse cx="983" cy="279" rx="80" ry="104" fill="#2c3c32" opacity="0.65"/>
+      </g>
+      <g filter="url(#bmid)">
+      <rect x="1001" y="81" width="31" height="460" rx="15" fill="#1c2620" opacity="0.41"/>
+      <rect x="359" y="119" width="19" height="460" rx="9" fill="#1c2620" opacity="0.41"/>
+      <rect x="501" y="151" width="17" height="460" rx="8" fill="#1c2620" opacity="0.44"/>
+      <rect x="540" y="150" width="26" height="460" rx="13" fill="#1c2620" opacity="0.46"/>
+      <rect x="1056" y="113" width="24" height="460" rx="12" fill="#1c2620" opacity="0.48"/>
+      <rect x="50" y="78" width="23" height="460" rx="11" fill="#1c2620" opacity="0.35"/>
+      <rect x="926" y="107" width="17" height="460" rx="9" fill="#1c2620" opacity="0.53"/>
+      <rect x="653" y="112" width="21" height="460" rx="10" fill="#1c2620" opacity="0.49"/>
+      </g>
+      <rect width="1200" height="460" fill="url(#fsun)"/>
+      <g filter="url(#bbok)">
+      <circle cx="930" cy="15" r="33" fill="url(#bok)" opacity="0.47"/>
+      <circle cx="916" cy="112" r="33" fill="url(#bokg)" opacity="0.76"/>
+      <circle cx="534" cy="137" r="31" fill="url(#bok)" opacity="0.66"/>
+      <circle cx="545" cy="118" r="30" fill="url(#bokg)" opacity="0.66"/>
+      <circle cx="1037" cy="216" r="23" fill="url(#bok)" opacity="0.77"/>
+      <circle cx="994" cy="23" r="18" fill="url(#bok)" opacity="0.38"/>
+      <circle cx="299" cy="8" r="37" fill="url(#bokg)" opacity="0.75"/>
+      <circle cx="199" cy="162" r="36" fill="url(#bok)" opacity="0.75"/>
+      <circle cx="1142" cy="43" r="46" fill="url(#bok)" opacity="0.57"/>
+      <circle cx="1168" cy="190" r="19" fill="url(#bok)" opacity="0.58"/>
+      <circle cx="413" cy="37" r="25" fill="url(#bokg)" opacity="0.36"/>
+      <circle cx="663" cy="96" r="15" fill="url(#bok)" opacity="0.63"/>
+      <circle cx="614" cy="5" r="47" fill="url(#bokg)" opacity="0.79"/>
+      <circle cx="142" cy="54" r="15" fill="url(#bokg)" opacity="0.47"/>
+      <circle cx="170" cy="91" r="45" fill="url(#bokg)" opacity="0.47"/>
+      <circle cx="193" cy="211" r="33" fill="url(#bokg)" opacity="0.39"/>
+      <circle cx="87" cy="155" r="28" fill="url(#bok)" opacity="0.77"/>
+      <circle cx="756" cy="182" r="17" fill="url(#bokg)" opacity="0.38"/>
+      <circle cx="1021" cy="99" r="26" fill="url(#bok)" opacity="0.77"/>
+      <circle cx="331" cy="21" r="32" fill="url(#bok)" opacity="0.40"/>
+      </g>
+      <g filter="url(#bfar)">
+      <ellipse cx="80" cy="440" rx="280" ry="160" fill="#161e19" opacity=".5"/>
+      <ellipse cx="1110" cy="450" rx="300" ry="170" fill="#161e19" opacity=".5"/>
+      </g>
+      <rect width="1200" height="460" filter="url(#grain)" opacity=".5"/>
+      </svg>
+    </div>
+  <div class="bb-scrim" aria-hidden="true"></div>
+  <div class="wrap bb-in">
+    <div>
+      <span class="eyebrow">О бренде</span>
+      <h2>Скандинавский уют, понятный каждому дому</h2>
+      <p>Хюгге — это про тепло простых вещей: мягкое полотенце, любимую кружку, дом, в который хочется возвращаться. Мы делаем спокойные, продуманные предметы быта, которые сочетаются между собой и служат долго.</p>
+      <div class="bb-quote">«Уют не в количестве вещей, а в том, как они о вас заботятся.»</div>
+    </div>
+    <div class="bb-art">
+      <svg class="mark" viewBox="0 0 400 400">
+        <path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/>
+        <path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Почему hyggehome</span>
+    <div class="values" style="margin-top:24px">
+      <div class="val"><div class="num">01</div><h4>Спокойная палитра</h4><p>Вещи в природных оттенках, которые легко сочетать между собой.</p></div>
+      <div class="val"><div class="num">02</div><h4>Качество в деталях</h4><p>Приятные материалы и аккуратная отделка, заметные в быту.</p></div>
+      <div class="val"><div class="num">03</div><h4>Доступный уют</h4><p>Тёплый дом не должен быть роскошью — поэтому честные цены.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a href="#" class="brand">
+          <svg class="mark" width="30" height="30" viewBox="0 0 400 400">
+            <path class="house" d="M200 64 L330 178 L330 332 L70 332 L70 178 Z"/>
+            <path class="flame" d="M200 192 C210 214 240 250 236 280 C233 300 216 306 200 306 C184 306 167 300 164 280 C160 250 190 214 200 192 Z"/>
+          </svg>
+          <span class="word"><b>hygge</b><span class="h2">home</span></span>
+        </a>
+        <p>Товары для уютного дома. Москва, доставка по России.</p>
+      </div>
+      <div class="fcol">
+        <h5>Каталог</h5>
+        <a href="catalog.html?cat=kitchen">Посуда</a>
+        <a href="catalog.html?cat=textile">Текстиль</a>
+        <a href="catalog.html?cat=cleaning">Уборка</a>
+        <a href="catalog.html?cat=misc">Мелочи для дома</a>
+      </div>
+      <div class="fcol">
+        <h5>Связь</h5>
+        <a href="#">Wildberries</a>
+        <a href="#">Ozon</a>
+        <a href="#">hello@hyggehome.ru</a>
+        <a href="#">+7 999 000-00-00</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 hyggehome</span>
+      <span>Сделано с теплом</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var nav = document.querySelector('nav');
+  function onScroll(){ if(window.scrollY > 12) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  if(reduce) return;
+  var items = document.querySelectorAll('.cat, .sec-head, .bb-in > div, .val, .foot-in > div');
+  items.forEach(function(el){ el.classList.add('reveal'); });
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    items.forEach(function(el,i){ el.style.transitionDelay = ((i % 4) * 60) + 'ms'; io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+</body>
+</html>

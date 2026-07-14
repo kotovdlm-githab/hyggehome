@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hyggehome.ru/sitemap.xml
