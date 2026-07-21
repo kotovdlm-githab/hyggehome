@@ -328,5 +328,17 @@ window.HH_PRODUCTS = [
       var lo = e.target.closest("[data-logout]"); if (lo) { e.preventDefault(); logout(); location.href = "account.html"; }
     });
   });
+  document.addEventListener("DOMContentLoaded", function () {
+    var nav = document.querySelector("nav"); if (!nav) return;
+    var navin = nav.querySelector(".nav-in"), links = nav.querySelector(".nav-links");
+    if (!navin || !links || nav.querySelector(".burger")) return;
+    var b = document.createElement("button");
+    b.className = "burger"; b.setAttribute("aria-label", "Меню"); b.setAttribute("aria-expanded", "false");
+    b.innerHTML = "<span></span><span></span><span></span>";
+    navin.appendChild(b);
+    b.addEventListener("click", function () { var o = nav.classList.toggle("open"); b.setAttribute("aria-expanded", o ? "true" : "false"); });
+    links.addEventListener("click", function (e) { if (e.target.closest("a")) { nav.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
+    document.addEventListener("click", function (e) { if (!nav.contains(e.target)) { nav.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
+  });
   window.addEventListener("storage", function (e) { if (e.key && e.key.indexOf("hh_") === 0) sync(); });
 })();

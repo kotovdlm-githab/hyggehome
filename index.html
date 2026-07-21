@@ -55,7 +55,11 @@ nav{position:sticky;top:0;z-index:20;background:rgba(251,248,243,.86);backdrop-f
 .nav-links a{color:var(--muted);transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-cart{font-weight:600;color:var(--ink)}
-.burger{display:none}
+.burger{display:none;width:44px;height:44px;border:none;background:transparent;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;padding:0;z-index:22}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .25s;margin:0 auto}
+nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+nav.open .burger span:nth-child(2){opacity:0}
+nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--cream);overflow:hidden}
@@ -120,15 +124,28 @@ footer{background:var(--cream);border-top:1px solid var(--line);padding:60px 0 3
 .foot-bot{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:10px}
 
 @media(max-width:860px){
-  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 20px 34px -22px rgba(46,58,52,.5);padding:6px 0;display:none}
+  nav.open .nav-links{display:flex}
+  .nav-links a{display:block;width:100%;padding:15px 28px;font-size:16px}
   .hero-in,.bb-in,.foot-in{grid-template-columns:1fr}
+  .hero-in{padding:48px 0 56px}
   .hero-art{order:-1;margin-bottom:10px}
+  .hero-art svg{width:210px;height:210px}
   .hero-tags{position:static;justify-content:flex-start;max-width:none;margin-top:18px}
+  .section{padding:56px 0}
+  .bb-in{padding:56px 0}
   .cats{grid-template-columns:1fr 1fr}
   .values{grid-template-columns:1fr;gap:24px}
   .bb-art{order:-1}
 }
-@media(max-width:520px){.cats{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .wrap{padding:0 18px}
+  .cats{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(36px,11vw,52px)}
+  .hero p{font-size:16px}
+  .btns .btn{flex:1;justify-content:center}
+}
 
 .fade{opacity:0;transform:translateY(16px);animation:fade .8s ease forwards}
 .fade:nth-child(2){animation-delay:.08s}
